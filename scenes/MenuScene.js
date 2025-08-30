@@ -4,7 +4,7 @@ class MenuScene extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image("logo", "assets/logo.png");
+        this.load.image("logo", "../assets/logo.png");
         this.load.audio("menuMusic", "../assets/menu.mp3"); // un nivel arriba
         this.load.audio("announcer", "../assets/announcer.wav"); // voz del presentador
     }
