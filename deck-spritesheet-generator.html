@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Grid 4x13</title>
+        <!-- Fuente pixelada Google Fonts -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            /* Reset básico */
+            *,
+            *::before,
+            *::after {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            html,
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100vw;
+                height: 100vh;
+                overflow: hidden;
+                background: transparent;
+                font-family: "Press Start 2P", monospace;
+            }
+            .grid {
+                display: grid;
+                grid-template-rows: repeat(4, 140px);
+                grid-template-columns: repeat(13, 100px);
+                justify-content: center;
+                align-content: center;
+            }
+            .cell {
+                width: 100px;
+                height: 140px;
+                background: white;
+                border: 10px solid;
+                border-radius: 10px;
+                font-size: 52px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .dorso {
+                border: 0;
+                background: white;
+            }
+            .reducir-texto {
+                font-size: 48px;
+            }
+            /* Colores por fila */
+            .cell:nth-child(-n + 13) {
+                border-color: firebrick;
+                color: firebrick;
+            }
+            .cell:nth-child(n + 14):nth-child(-n + 26) {
+                border-color: seagreen;
+                color: seagreen;
+            }
+            .cell:nth-child(n + 27):nth-child(-n + 39) {
+                border-color: goldenrod;
+                color: goldenrod;
+            }
+            .cell:nth-child(n + 40) {
+                border-color: royalblue;
+                color: royalblue;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="grid">
+            <!-- Fila 0 -->
+            <div class="cell dorso">
+                <img src="assets/LogoTransparente.png" alt="Logo" width="100" />
+            </div>
+            <div class="cell">1</div>
+            <div class="cell">2</div>
+            <div class="cell">3</div>
+            <div class="cell">4</div>
+            <div class="cell">5</div>
+            <div class="cell">6</div>
+            <div class="cell">7</div>
+            <div class="cell">8</div>
+            <div class="cell">9</div>
+            <div class="cell reducir-texto">10</div>
+            <div class="cell reducir-texto">11</div>
+            <div class="cell reducir-texto">12</div>
+
+            <!-- Fila 1 -->
+            <div class="cell dorso">
+                <img src="assets/LogoTransparente.png" alt="Logo" width="100" />
+            </div>
+            <div class="cell">1</div>
+            <div class="cell">2</div>
+            <div class="cell">3</div>
+            <div class="cell">4</div>
+            <div class="cell">5</div>
+            <div class="cell">6</div>
+            <div class="cell">7</div>
+            <div class="cell">8</div>
+            <div class="cell">9</div>
+            <div class="cell reducir-texto">10</div>
+            <div class="cell reducir-texto">11</div>
+            <div class="cell reducir-texto">12</div>
+
+            <!-- Fila 2 -->
+            <div class="cell dorso">
+                <img src="assets/LogoTransparente.png" alt="Logo" width="100" />
+            </div>
+            <div class="cell">1</div>
+            <div class="cell">2</div>
+            <div class="cell">3</div>
+            <div class="cell">4</div>
+            <div class="cell">5</div>
+            <div class="cell">6</div>
+            <div class="cell">7</div>
+            <div class="cell">8</div>
+            <div class="cell">9</div>
+            <div class="cell reducir-texto">10</div>
+            <div class="cell reducir-texto">11</div>
+            <div class="cell reducir-texto">12</div>
+
+            <!-- Fila 3 -->
+            <div class="cell dorso">
+                <img src="assets/LogoTransparente.png" alt="Logo" width="100" />
+            </div>
+            <div class="cell">1</div>
+            <div class="cell">2</div>
+            <div class="cell">3</div>
+            <div class="cell">4</div>
+            <div class="cell">5</div>
+            <div class="cell">6</div>
+            <div class="cell">7</div>
+            <div class="cell">8</div>
+            <div class="cell">9</div>
+            <div class="cell reducir-texto">10</div>
+            <div class="cell reducir-texto">11</div>
+            <div class="cell reducir-texto">12</div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+        <script>
+            window.addEventListener("load", () => {
+                setTimeout(() => {
+                    const grid = document.querySelector(".grid");
+                    html2canvas(grid, {
+                        backgroundColor: null,
+                        width: 1300,
+                        height: 560,
+                        scale: 1
+                    }).then(canvas => {
+                        const link = document.createElement("a");
+                        link.download = "deck.png";
+                        link.href = canvas.toDataURL("image/png");
+                        link.click();
+                    });
+                }, 2000);
+            });
+        </script>
+    </body>
+</html>
