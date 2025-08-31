@@ -13,11 +13,13 @@ class MenuScene extends Phaser.Scene {
         this.cameras.main.setBackgroundColor("#8f43f9");
 
         const centerX = this.scale.width / 2;
-        const centerY = this.scale.height / 2 - 100;
+        const line1 = this.scale.height / 3;      // primer tercio: logo
+        const line2 = 2 * this.scale.height / 3;  // segundo tercio: START
 
+        // logo
         const logo = this.add.image(centerX, -200, "logo").setOrigin(0.5).setScale(1.5);
 
-        // reproducir música y sonido del presentador
+        // reproducir música y voz del presentador
         this.menuMusic = this.sound.add("menuMusic", { loop: true, volume: 0.5 });
         this.menuMusic.play();
         this.sound.play("announcer", { volume: 1 });
@@ -25,7 +27,7 @@ class MenuScene extends Phaser.Scene {
         // animación caída del logo
         this.tweens.add({
             targets: logo,
-            y: centerY,
+            y: line1,
             duration: 326,
             ease: "Bounce.easeOut",
             onComplete: () => {
@@ -40,7 +42,7 @@ class MenuScene extends Phaser.Scene {
                 });
 
                 // texto START
-                const jugarText = this.add.text(centerX, this.scale.height / 2 + 400, "START", {
+                const jugarText = this.add.text(centerX, line2, "START", {
                     fontFamily: '"Press Start 2P"',
                     fontSize: "32px",
                     color: "#000"
